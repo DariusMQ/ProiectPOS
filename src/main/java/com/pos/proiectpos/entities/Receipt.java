@@ -3,6 +3,7 @@ package com.pos.proiectpos.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,4 +25,14 @@ public class Receipt {
     private LocalDateTime time;
 
 
+    @OneToOne(mappedBy = "receipt")
+    private Cart cart;
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 }

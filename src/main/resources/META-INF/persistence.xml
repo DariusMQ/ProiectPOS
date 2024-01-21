@@ -9,5 +9,6 @@
         <class>com.pos.proiectpos.entities.User</class>
         <class>com.pos.proiectpos.entities.Cart</class>
         <class>com.pos.proiectpos.entities.Receipt</class>
+        <class>com.pos.proiectpos.entities.Product_in_cart</class>
     </persistence-unit>
 </persistence>

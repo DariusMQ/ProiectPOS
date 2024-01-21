@@ -1,9 +1,8 @@
 package com.pos.proiectpos.entities;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
 public class Product {
@@ -53,5 +52,17 @@ public class Product {
 
     public void setStock(Long stock) {
         this.stock = stock;
+    }
+
+
+    @OneToMany(mappedBy = "product_in_stock")
+    private Collection<Product_in_cart> product_in_cart;
+
+    public Collection<Product_in_cart> getProduct_in_cart() {
+        return product_in_cart;
+    }
+
+    public void setProduct_in_cart(Collection<Product_in_cart> product_in_cart) {
+        this.product_in_cart = product_in_cart;
     }
 }

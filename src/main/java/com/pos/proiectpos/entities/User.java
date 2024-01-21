@@ -1,9 +1,6 @@
 package com.pos.proiectpos.entities;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class User {
@@ -51,4 +48,14 @@ public class User {
         this.password = password;
     }
 
+    @OneToOne(mappedBy = "owner")
+    private Cart cart_id;
+
+    public Cart getCart_id() {
+        return cart_id;
+    }
+
+    public void setCart_id(Cart cart_id) {
+        this.cart_id = cart_id;
+    }
 }
