@@ -65,4 +65,16 @@ public class Product {
     public void setProduct_in_cart(Collection<Product_in_cart> product_in_cart) {
         this.product_in_cart = product_in_cart;
     }
+
+
+    @OneToMany(mappedBy = "product_in_stock")
+    private Collection<Product_in_receipt> product_in_receipt;
+
+    public Collection<Product_in_receipt> getProduct_in_receipt() {
+        return product_in_receipt;
+    }
+
+    public void setProduct_in_receipt(Collection<Product_in_receipt> product_in_receipt) {
+        this.product_in_receipt = product_in_receipt;
+    }
 }

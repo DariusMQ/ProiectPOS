@@ -1,12 +1,10 @@
 package com.pos.proiectpos.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Entity
 public class Receipt {
@@ -25,14 +23,26 @@ public class Receipt {
     private LocalDateTime time;
 
 
-    @OneToOne(mappedBy = "receipt")
-    private Cart cart;
+    @ManyToOne
+    private User owner;
 
-    public Cart getCart() {
-        return cart;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+
+    @OneToMany
+    private Collection<Product_in_receipt> products;
+
+    public Collection<Product_in_receipt> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Collection<Product_in_receipt> products) {
+        this.products = products;
     }
 }

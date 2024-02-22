@@ -6,6 +6,7 @@ import java.util.Collection;
 
 @Entity
 public class Cart {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -27,17 +28,6 @@ public class Cart {
 
     public void setOwner(User owner) {
         this.owner = owner;
-    }
-
-    @OneToOne
-    private Receipt receipt;
-
-    public Receipt getReceipt() {
-        return receipt;
-    }
-
-    public void setReceipt(Receipt receipt) {
-        this.receipt = receipt;
     }
 
     @OneToMany
