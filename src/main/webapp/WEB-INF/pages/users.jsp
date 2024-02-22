@@ -2,24 +2,24 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="p" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:pageTemplate pageTitle="POS">
-    <h1> Products </h1>
+<t:pageTemplate pageTitle="Users">
+    <h1> Users </h1>
 
     <div class="container text-center">
-        <p:forEach var="prod" items="${products}">
+        <p:forEach var="user" items="${users}">
             <div class="row">
                 <div class="col">
-                    ${prod.product_name}
+                        ${user.id}
                 </div>
                 <div class="col">
-                        ${prod.stock}
+                        ${user.username}
                 </div>
                 <div class="col">
-                        ${prod.price}
+                        ${user.email}
                 </div>
             </div>
         </p:forEach>
     </div>
 
-    <h5>Number of products: ${numberOfProducts}</h5>
+    <h5>Number of users: ${numberOfUsers}</h5>
 </t:pageTemplate>

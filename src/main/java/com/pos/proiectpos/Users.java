@@ -1,8 +1,8 @@
 package com.pos.proiectpos;
 
 import com.pos.proiectpos.common.ProductDto;
-import com.pos.proiectpos.ejb.ProductBean;
-import com.pos.proiectpos.entities.Product;
+import com.pos.proiectpos.common.UserDto;
+import com.pos.proiectpos.ejb.UserBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -11,18 +11,18 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Products", value = "/Products")
-public class Products extends HttpServlet {
+@WebServlet(name = "Users", value = "/Users")
+public class Users extends HttpServlet {
 
     @Inject
-    ProductBean productBean;
+    UserBean userBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<ProductDto> products = productBean.findAllProducts();
-        request.setAttribute("products", products);
-        request.setAttribute("numberOfProducts", products.size());
-        request.getRequestDispatcher("/WEB-INF/pages/products.jsp").forward(request, response);
+        List<UserDto> users = userBean.findAllUsers();
+        request.setAttribute("users", users);
+        request.setAttribute("numberOfUsers", users.size());
+        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
     }
 
     @Override
