@@ -15,6 +15,14 @@ public class Product {
         this.id = id;
     }
 
+    public ProductPhoto getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(ProductPhoto photo) {
+        this.photo = photo;
+    }
+
     public Long getId() {
         return id;
     }
@@ -69,6 +77,11 @@ public class Product {
 
     @OneToMany(mappedBy = "product_in_stock")
     private Collection<Product_in_receipt> product_in_receipt;
+
+
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private ProductPhoto photo;
+
 
     public Collection<Product_in_receipt> getProduct_in_receipt() {
         return product_in_receipt;

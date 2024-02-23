@@ -12,6 +12,7 @@
         <class>com.pos.proiectpos.entities.Receipt</class>
         <class>com.pos.proiectpos.entities.Product_in_cart</class>
         <class>com.pos.proiectpos.entities.Product_in_receipt</class>
+        <class>com.pos.proiectpos.entities.ProductPhoto</class>
 
         <properties>
             <property name="jakarta.persistence.schema-generation.database.action" value="create-or-extend-tables" />

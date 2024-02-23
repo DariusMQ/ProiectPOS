@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_CARS"}))
 @WebServlet(name = "EditProduct", value = "/EditProduct")
 public class EditProduct extends HttpServlet {
 

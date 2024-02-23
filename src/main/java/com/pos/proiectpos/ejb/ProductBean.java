@@ -1,7 +1,9 @@
 package com.pos.proiectpos.ejb;
 
 import com.pos.proiectpos.common.ProductDto;
+import com.pos.proiectpos.common.ProductPhotoDto;
 import com.pos.proiectpos.entities.Product;
+import com.pos.proiectpos.entities.ProductPhoto;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -74,5 +76,32 @@ public class ProductBean {
         Product product = entityManager.find(Product.class, productId);
 
         entityManager.remove(product);
+    }
+
+    public void addPhotoToProduct(Long productId, String filename, String fileType, byte[] fileContent) {
+        LOG.info("addPhotoToProduct");
+        ProductPhoto photo = new ProductPhoto();
+        photo.setFilename(filename);
+        photo.setFileType(fileType);
+        photo.setFileContent(fileContent);
+        Product product = entityManager.find(Product.class, productId);
+        if (product.getPhoto() != null) {
+            entityManager.remove(product.getPhoto());
+        }
+        product.setPhoto(photo);
+        photo.setProduct(product);
+        entityManager.persist(photo);
+    }
+    public ProductPhotoDto findPhotoByProductId(Integer productId) {
+        List<ProductPhoto> photos = entityManager
+                .createQuery("SELECT p FROM ProductPhoto p where p.product.id = :id", ProductPhoto.class)
+                .setParameter("id", productId)
+                .getResultList();
+        if (photos.isEmpty()) {
+            return null;
+        }
+        ProductPhoto photo = photos.get(0); // the first element
+        return new ProductPhotoDto(photo.getId(), photo.getFilename(), photo.getFileType(),
+                photo.getFileContent());
     }
 }
