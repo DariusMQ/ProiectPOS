@@ -1,4 +1,4 @@
-package com.pos.proiectpos;
+package com.pos.proiectpos.servlets;
 
 import com.pos.proiectpos.common.ProductDto;
 import com.pos.proiectpos.common.UserDto;
